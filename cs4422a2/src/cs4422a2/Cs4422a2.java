@@ -41,7 +41,9 @@ public class Cs4422a2 {
                                      record[16]);
                 tweets.add(tw);
             }
-            System.out.println(tweets);
+            for(Tweet tw: tweets){
+                System.out.println(tw.index+" "+tw.screenName+" "+tw.text);
+            }
             /* My crappy CSV parser which didn't work :(
             String tweetFile = "C:\\docTweet.csv";
             BufferedReader br = null;
