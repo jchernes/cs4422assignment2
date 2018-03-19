@@ -14,6 +14,7 @@ import java.util.Arrays;
 
 //opencsv parser
 import com.opencsv.CSVReader;
+import java.util.Iterator;
 import org.apache.commons.lang3.ObjectUtils;
 
 /**
@@ -41,9 +42,7 @@ public class Cs4422a2 {
                                      record[16]);
                 tweets.add(tw);
             }
-            for(Tweet tw: tweets){
-                System.out.println(tw.index+" "+tw.screenName+" "+tw.text);
-            }
+            
             /* My crappy CSV parser which didn't work :(
             String tweetFile = "C:\\docTweet.csv";
             BufferedReader br = null;
@@ -95,6 +94,63 @@ public class Cs4422a2 {
             System.out.println(str[0] + " " + str[11]);
             }
             */
+            
+            //output the screen names read in
+            for(Tweet tw: tweets){
+                System.out.print(tw.screenName+" ");
+            }
+            
+            
+            //Quicksort the Array of tweets by screen name
+            
+            TweetSort ts = new TweetSort();
+            
+            ts.sort(tweets);
+            
+            System.out.println("Sorted:");
+            for(Tweet tw: tweets){
+                System.out.print(tw.screenName+" ");
+            }
+            
+            //now that it's sorted, cound and record the occurrences of screenames
+            
+            ArrayList<String[]> counted = new ArrayList<String[]>();
+            
+            //set the initial name we are couting
+            String currentName = tweets.get(0).screenName;
+            int currentCount = 1;
+            
+            for(int i=1; i<tweets.size(); i++){
+                if(!tweets.get(i).screenName.equals(currentName)){
+                    counted.add(new String[]{currentName,Integer.toString(currentCount)});
+                    currentName = tweets.get(i).screenName;
+                    currentCount = 1;
+                }
+                currentCount++;
+            }
+            
+            //find the top 5
+            
+            System.out.println("\n\nTop 5 Tweeters\n"
+                                 + "==============");
+            
+            for(int i=1; i<=5; i++){
+                String name = "N/A";
+                int count=0,total=0;
+                
+                Iterator<String[]> itr = counted.iterator();
+                
+                while(itr.hasNext()&&total<5){
+                    String[] str = itr.next();
+                    //check if the current cound is larger, if so, set the current largest and remove from list
+                    if(Integer.parseInt(str[1]) > count){
+                        name = str[0];
+                        count = Integer.parseInt(str[1]);
+                        itr.remove();
+                    }
+                }
+                System.out.println("Number " + i + ": " + name + " " + count);
+            }
     }
     
 }
