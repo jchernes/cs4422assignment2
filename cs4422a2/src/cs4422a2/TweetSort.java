@@ -15,30 +15,27 @@ public class TweetSort {
     
     //arraylist sort method, input a tweet arraylist, sort by specified parameter
     //sortby is the specified field
-    void sort(ArrayList<Tweet> twts){
+    void sort(ArrayList<Tweet> twts, int sortby){
         //check if twts is empty
         if (twts.isEmpty()) return;
         
-        //make a temporary copy of the original arraylist
-        ArrayList<Tweet> tempArray = new ArrayList<Tweet>(twts);
-        
         //call the quicksort method and sort the arraylist
-        quickSort(tempArray,0,twts.size()-1);
+        quickSort(twts,0,twts.size()-1, sortby);
     }
     
     //recursive quickSort method
-    void quickSort(ArrayList<Tweet> twts,int low,int high){
+    void quickSort(ArrayList<Tweet> twts,int low,int high, int sortby){
         int i = low;
         int j = high;
         
         Tweet pivot = twts.get(low + (high - low)/2);
         
         while(i<=j){
-            while(twts.get(i).screenName.compareTo(pivot.screenName)<0){
+            while(twts.get(i).data[sortby].compareTo(pivot.data[sortby])<0){
                 i++;
             }
             
-            while(twts.get(j).screenName.compareTo(pivot.screenName)>0){
+            while(twts.get(j).data[sortby].compareTo(pivot.data[sortby])>0){
                 j--;
             }
             
@@ -50,11 +47,11 @@ public class TweetSort {
         }
         
         if(low<j){
-            quickSort(twts,low,j);
+            quickSort(twts,low,j,sortby);
         }
         
         if(i<high){
-            quickSort(twts,i,high);
+            quickSort(twts,i,high,sortby);
         }
     }
     

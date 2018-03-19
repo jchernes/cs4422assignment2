@@ -97,7 +97,7 @@ public class Cs4422a2 {
             
             //output the screen names read in
             for(Tweet tw: tweets){
-                System.out.print(tw.screenName+" ");
+                System.out.print(tw.data[11]+" ");
             }
             
             
@@ -105,11 +105,11 @@ public class Cs4422a2 {
             
             TweetSort ts = new TweetSort();
             
-            ts.sort(tweets);
+            ts.sort(tweets, 11);
             
             System.out.println("Sorted:");
             for(Tweet tw: tweets){
-                System.out.print(tw.screenName+" ");
+                System.out.print(tw.data[11]+" ");
             }
             
             //now that it's sorted, cound and record the occurrences of screenames
@@ -117,13 +117,13 @@ public class Cs4422a2 {
             ArrayList<String[]> counted = new ArrayList<String[]>();
             
             //set the initial name we are couting
-            String currentName = tweets.get(0).screenName;
+            String currentName = tweets.get(0).data[11];
             int currentCount = 1;
             
             for(int i=1; i<tweets.size(); i++){
-                if(!tweets.get(i).screenName.equals(currentName)){
+                if(!tweets.get(i).data[11].equals(currentName)){
                     counted.add(new String[]{currentName,Integer.toString(currentCount)});
-                    currentName = tweets.get(i).screenName;
+                    currentName = tweets.get(i).data[11];
                     currentCount = 1;
                 }
                 currentCount++;

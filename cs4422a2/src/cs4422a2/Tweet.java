@@ -5,75 +5,47 @@
  */
 package cs4422a2;
 
+import java.util.Arrays;
+
 /**
  *
  * @author shock
  */
 public class Tweet {
-    String index,text,favorited,favoriteCount,replyToSN,created,truncated,replayToSID,id,replyToUID,statusSource,screenName,retweetCount,isRetweet,retweeted,longitude,latitude;
-
+    //added this to access data by index!
+    // {index,text,favorited,favoriteCount,replyToSN,created,truncated,replayToSID,id,replyToUID,statusSource,screenName,retweetCount,isRetweet,retweeted,longitude,latitude};
+    String data[] = new String[17];
+    
     
     
     public Tweet(String index, String text, String favorited, String favoriteCount, String replyToSN, String created, String truncated, String replayToSID, String id, String replyToUID, String statusSource, String screenName, String retweetCount, String isRetweet, String retweeted, String longitude, String latitude) {
-        this.index          = index;
-        this.text           = text;
-        this.favorited      = favorited;
-        this.favoriteCount  = favoriteCount;
-        this.replyToSN      = replyToSN;
-        this.created        = created;
-        this.truncated      = truncated;
-        this.replayToSID    = replayToSID;
-        this.id             = id;
-        this.replyToUID     = replyToUID;
-        this.statusSource   = statusSource;
-        this.screenName     = screenName;
-        this.retweetCount   = retweetCount;
-        this.isRetweet      = isRetweet;
-        this.retweeted      = retweeted;
-        this.longitude      = longitude;
-        this.latitude       = latitude;
+        this.data[0]  = index;
+        this.data[1]  = text;
+        this.data[2]  = favorited;
+        this.data[3]  = favoriteCount;
+        this.data[4]  = replyToSN;
+        this.data[5]  = created;
+        this.data[6]  = truncated;
+        this.data[7]  = replayToSID;
+        this.data[8]  = id;
+        this.data[9]  = replyToUID;
+        this.data[10] = statusSource;
+        this.data[11] = screenName;
+        this.data[12] = retweetCount;
+        this.data[13] = isRetweet;
+        this.data[14] = retweeted;
+        this.data[15] = longitude;
+        this.data[16] = latitude;
     }
     
      //Constructor for setting values from another tweet function used to duplicate the contents of the tweet
     public Tweet(Tweet copyFrom){
-        this.index        = copyFrom.index;
-        this.text         = copyFrom.text;
-        this.favorited    = copyFrom.favorited;
-        this.favoriteCount= copyFrom.favoriteCount;
-        this.replyToSN    = copyFrom.replyToSN;
-        this.created      = copyFrom.created;
-        this.truncated    = copyFrom.truncated;
-        this.replayToSID  = copyFrom.replayToSID;
-        this.id           = copyFrom.id;
-        this.replyToUID   = copyFrom.replyToUID;
-        this.statusSource = copyFrom.statusSource;
-        this.screenName   = copyFrom.screenName;
-        this.retweetCount = copyFrom.retweetCount;
-        this.isRetweet    = copyFrom.isRetweet;
-        this.retweeted    = copyFrom.retweeted;
-        this.longitude    = copyFrom.longitude;
-        this.latitude     = copyFrom.latitude;
+        this.data  = Arrays.copyOf(copyFrom.data, copyFrom.data.length);
     }
     
     //TweetCopy function used to duplicate the contents of the tweet
     public void TweetCopy(Tweet copyTo){
-        copyTo.index        = this.index;
-        copyTo.text         = this.text;
-        copyTo.favorited    = this.favorited;
-        copyTo.favoriteCount= this.favoriteCount;
-        copyTo.replyToSN    = this.replyToSN;
-        copyTo.created      = this.created;
-        copyTo.truncated    = this.truncated;
-        copyTo.replayToSID  = this.replayToSID;
-        copyTo.id           = this.id;
-        copyTo.replyToUID   = this.replyToUID;
-        copyTo.statusSource = this.statusSource;
-        copyTo.screenName   = this.screenName;
-        copyTo.retweetCount = this.retweetCount;
-        copyTo.isRetweet    = this.isRetweet;
-        copyTo.retweeted    = this.retweeted;
-        copyTo.longitude    = this.longitude;
-        copyTo.latitude     = this.latitude;
+        copyTo.data = Arrays.copyOf(this.data, this.data.length);
     }
     
     
