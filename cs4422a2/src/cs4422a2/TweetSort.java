@@ -1,5 +1,5 @@
 /*
- * This contains the algorithm for sorting
+ * This contains the algorithm for sorting an ArrayList of Tweets
 */
 package cs4422a2;
 
