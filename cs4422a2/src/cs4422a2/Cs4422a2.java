@@ -193,7 +193,8 @@ public class Cs4422a2 {
                 + "\n2.) Search for tweet"
                 + "\n3.) Add tweet"
                 + "\n4.) Delete tweet"
-                + "\n5.) Quit\nChoice:");
+                + "\n5.) Sort tweets"
+                + "\n6.) Quit\nChoice:");
                 
                 String choice = br.readLine();
                 
